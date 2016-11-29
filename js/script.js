@@ -131,5 +131,34 @@
     });
 
 
+///////////////////////////////////////
+//      PAGE TRACK
+//      icons on track to change state when scrolled to point
+///////////////////////////////////////
+
+function pageTrack( sectionClass, sectionOffset ){
+
+  var st = $(document).scrollTop();
+  var scrollOffset = $(window).height() - sectionOffset;
+  var section = $(sectionClass).offset();
+
+  if( ( st + scrollOffset ) > section.top ){
+    $(sectionClass).find('.page-section__icon').addClass('scrolled');
+  }else{
+    $(sectionClass).find('.page-section__icon').removeClass('scrolled');
+  }
+
+};
+
+$(document).scroll(function(){
+  pageTrack('.page-section--food-and-drink',340);
+  pageTrack('.page-section--culture',280);
+  pageTrack('.page-section--attractions',220);
+  pageTrack('.page-section--shopping',160);
+});
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 });})(jQuery, this); // on ready end

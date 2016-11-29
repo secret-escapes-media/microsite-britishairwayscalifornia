@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+
+{% include banner.html %}
+
+
+<!-- SECTION CONTAINER -->
+<div class="page-section-container">
+
+  {% for section in page.sections %}
+  <section class="page-section page-section--{{ section.class }} {% cycle "section--light-grey-bg", "" %} section--padding-large" id="{{ section.class }}">
+
+    <div class="page-section__track">
+      <a href="#{{ section.class }}" class="page-section__icon page-section__icon-{{ forloop.index }}">
+        <img src="{{ site.baseurl }}/img/icons/icon-{{ section.class }}.svg" width="24" alt="">
+      </a>
+    </div>
+
+    <div class="row row--padding page-section__title">
+      <h3 class="title title--lg page-section__title-main">{{ section.title }}</h3>
+    </div>
+
+    <div class="row row--padding row--columns-6-6-gutters">
+
+      <div class="row__column">
+        {{ section.content }}
+      </div>
+
+      <div class="row__column">
+        {% for place in section.places %}
+          <h4 class="title--sm">{{ place.title }}</h4>
+          <p>{{ place.description }}</p>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+  {% endfor %}
+
+
+  <section class="section--light-grey-bg section--padding-large section--flights" style="background-image: url({{ site.baseurl }}/img/bg/section-bg-flights.jpg);">
+
+    <div class="row row--padding section__title">
+      <h2 class="title title--sm title--kerning-wide section__title-pre">FLY WITH BRITISH AIRWAYS</h2>
+      <h3 class="title title--lg section__title-main">Getting to {{ page.title }}</h3>
+    </div>
+
+    <div class="row row--padding row--columns-6-6-gutters">
+
+      <div class="row__column">
+        <p class="lead-paragraph">Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. </p>
+        <p>Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+        <a href="#" class="btn btn--solid">Book now</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+

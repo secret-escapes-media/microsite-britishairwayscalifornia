@@ -12,10 +12,9 @@
   .footer-nav {
     &__link {
       text-transform: uppercase;
-      font-size: 1.2em;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      padding: 0 10px;
+      letter-spacing: 0.05em;
+      padding: 0 5px;
     }
   }
 }
@@ -54,27 +53,114 @@
     color: $white;
   }
   &--partner-bg {
-    background-color: $partner-secondary;
+    background-color: $partner-primary;
     color: $white;
   }
-}
 
-// ---------- button ----------
-
-.btn {
-  @include transition;
-  display:inline-block;
-  padding: .5em 1.5em;
-  border: 1px solid $se-orange;
-  font-weight: 500;
-  border-radius: 10em;
-  &:hover {
-    color: white;
-    background-color: $se-orange;
-    text-decoration: none;
+  // section sized to height of window
+  &--padding {
+    padding: 4em 0;
+    &-small { padding: 2em 0; }
+    &-large { padding: 6em 0; }
   }
-  * + & { margin-top: 1em; }
-
-  &--solid { color: white; border: 0; background-color: $se-orange; }
-  &--large { font-size: 1.2em; padding: .5em 3em; }
 }
+
+// ---------- Banner ----------
+
+.banner {
+  position: relative;
+  background-image: url('../img/bg/banner-default.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 0; padding-bottom: 0;
+  &--padding {
+    padding: 8em 0;
+  }
+  &--title {
+    font-family: $title-font-family;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 3.8em;
+    text-shadow: 0 0 35px rgba(14, 20, 32, 0.8);
+    line-height: 1;
+    margin-bottom: 20px;
+    @include bp(large) {
+      font-size: 5.2em;
+    }
+  }
+  &--subtitle {
+    border-top: 3px solid white;
+    padding: 1.5em 0;
+    text-shadow: 0 0 35px #aa7612;
+  }
+  &--content {
+    padding: 2em;
+    background-color: rgba($partner-primary, 0.8);
+  }
+}
+
+
+// ---------- Page sections ----------
+
+.page-section {
+  position: relative;
+
+  &__title {
+    border-left: 5px solid #000;
+    &-main {}
+  }
+
+  &--culture {
+    .page-section__title {
+      border-left: 5px solid #70b8ab;
+      &-main { color: #70b8ab; }
+    }
+  }
+
+  &--food-and-drink {
+    .page-section__title {
+      border-left: 5px solid #d08a00;
+      &-main { color: #d08a00; }
+    }
+  }
+
+  &--attractions {
+    .page-section__title {
+      border-left: 5px solid #598619;
+      &-main { color: #598619; }
+    }
+  }
+
+  &--shopping {
+    .page-section__title {
+      border-left: 5px solid #8b66d0;
+      &-main { color: #8b66d0; }
+    }
+  }
+
+  &__track {
+    background-image: url('../img/bg/page-section-track.png');
+    background-repeat: repeat-y;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    top: 0;
+    left: 50%;
+    margin-left: -630px;
+  }
+  &__icon {
+    padding: 10px 5px; width: 50px; height: 50px; text-align: center;
+    position: fixed; bottom: 20px; margin-top: -25px; display: block;
+    background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
+    &-1 { bottom: 200px; }
+    &-2 { bottom: 140px; }
+    &-3 { bottom: 80px; }
+    &-4 { bottom: 20px; }
+    &.scrolled { position: absolute; bottom: auto; top: 120px; }
+  }
+
+}
+
+

@@ -1,0 +1,18 @@
+<section class="site-header__offset color-white banner align-center">
+  <div class="row row--padding banner--padding">
+    <h1 class="banner--title title--kerning-wide">
+      {% if page.banner-title %}
+        {{ page.banner-title }}
+      {% else %}
+        {{ page.title }}
+      {% endif %}
+    </h1>
+  </div>
+  {% if page.banner-content %}
+  <div class="banner--content">
+    <div class="row row--padding">
+      {{ page.banner-content }}
+    </div>
+  </div>
+  {% endif %}
+</section>

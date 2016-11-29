@@ -2,23 +2,10 @@
 layout: default
 title: Style Guide
 class: style-guide
-nav-order: 5
-meta-description: Accusamus ab expedita in impedit pariatur molestiae eveniet adipisci obcaecati autem explicabo, laudantium dolor amet, commodi officia enim tempora illum dolorem. Culpa.
 ---
 
-<section class="section--fixed-bg intro site-header__offset text-white">
-  <div class="row row--padding">
-    <h1>{{ page.title }}</h1>
-    <ul class="list--horizontal">
-      <li><a href="#Typography">Typography</a></li>
-      <li><a href="#Buttons">Buttons</a></li>
-      <li><a href="#Colours">Colours</a></li>
-      <li><a href="#Modal">Modal</a></li>
-      <li><a href="#Offers">Offers</a></li>
-    </ul>
-  </div>
-</section>
 
+{% include banner.html %}
 
 
 <!--// Typography
@@ -50,6 +37,28 @@ meta-description: Accusamus ab expedita in impedit pariatur molestiae eveniet ad
     <h6>This is an H6 heading</h6>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     <hr />
+    <p class="title title--xxl">This is a .title with .title--xxl</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--xl">This is a .title with .title--xl</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--lg">This is a .title with .title--lg</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--md">This is a .title with .title--md</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--sm">This is a .title with .title--sm</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--xs">This is a .title with .title--xs</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+    <p class="title title--xxs">This is a .title with .title--xxs</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <hr />
+
   </div>
 </section>
 
@@ -155,6 +164,10 @@ meta-description: Accusamus ab expedita in impedit pariatur molestiae eveniet ad
         <dt>
           <span class="styleguide--colour bg--partner-secondary"></span>
           Partner secondary <code>$partner-secondary</code>
+        </dt>
+        <dt>
+          <span class="styleguide--colour bg--partner-tertiary"></span>
+          Partner tertiary <code>$partner-tertiary</code>
         </dt>
       </dl>
     </div>

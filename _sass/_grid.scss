@@ -25,7 +25,7 @@ section {
 }
 
 .row {
-  @include container( $xxlarge );
+  @include container( $xxxlarge );
   position: relative;
   & + .row { margin-top: $margin; }
 }
