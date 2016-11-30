@@ -143,18 +143,18 @@ function pageTrack( sectionClass, sectionOffset ){
   var section = $(sectionClass).offset();
 
   if( ( st + scrollOffset ) > section.top ){
-    $(sectionClass).find('.page-section__icon').addClass('scrolled');
+    $(sectionClass).find('.page-track__icon').addClass('scrolled');
   }else{
-    $(sectionClass).find('.page-section__icon').removeClass('scrolled');
+    $(sectionClass).find('.page-track__icon').removeClass('scrolled');
   }
 
 };
 
 $(document).scroll(function(){
-  pageTrack('.page-section--food-and-drink',340);
-  pageTrack('.page-section--culture',280);
-  pageTrack('.page-section--attractions',220);
-  pageTrack('.page-section--shopping',160);
+  pageTrack('.page-section--food-and-drink',400);
+  pageTrack('.page-section--culture',340);
+  pageTrack('.page-section--attractions',280);
+  pageTrack('.page-section--shopping',220);
 });
 
 

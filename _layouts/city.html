@@ -12,8 +12,13 @@ layout: default
   {% for section in page.sections %}
   <section class="page-section page-section--{{ section.class }} {% cycle "section--light-grey-bg", "" %} section--padding-large" id="{{ section.class }}">
 
-    <div class="page-section__track">
-      <a href="#{{ section.class }}" class="page-section__icon page-section__icon-{{ forloop.index }}">
+    <div class="page-track">
+      {% if forloop.first %}
+      <a href="#{{ section.class }}" class="page-track__start">
+        <img src="{{ site.baseurl }}/img/icons/icon-arrow-down.svg" width="24" alt="">
+      </a>
+      {% endif %}
+      <a href="#{{ section.class }}" class="page-track__icon page-track__icon-{{ forloop.index }}">
         <img src="{{ site.baseurl }}/img/icons/icon-{{ section.class }}.svg" width="24" alt="">
       </a>
     </div>
@@ -23,19 +28,28 @@ layout: default
     </div>
 
     <div class="row row--padding row--columns-6-6-gutters">
-
       <div class="row__column">
         {{ section.content }}
       </div>
-
-      <div class="row__column">
-        {% for place in section.places %}
-          <h4 class="title--sm">{{ place.title }}</h4>
-          <p>{{ place.description }}</p>
-        {% endfor %}
-      </div>
-
+      {% for place in section.places %}
+      {% if place.featured %}
+        <div class="row__column">
+          {% include city-card.html class="large" %}
+        </div>
+      {% endif %}
+      {% endfor %}
     </div>
+
+    <div class="row row--padding row--columns-4-4-4-gutters">
+      {% for place in section.places %}
+      {% unless place.featured %}
+        <div class="row__column">
+          {% include city-card.html class="medium" %}
+        </div>
+      {% endunless %}
+      {% endfor %}
+    </div>
+
   </section>
   {% endfor %}
 

@@ -1,0 +1,14 @@
+
+<div class="card card-city card--{{ include.class }} color-white"
+  style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}-{{ place.class }}.jpg');">
+
+  <div class="card__title">
+    {% if include.class == 'large' %}
+      <h4 class="title title--md">{{ place.title }}</h4>
+    {% else %}
+      <h4 class="title title--sm">{{ place.title }}</h4>
+      <p>{{ place.description | truncate: 75 }}</p>
+    {% endif %}
+  </div>
+
+</div>
