@@ -10,8 +10,11 @@ layout: default
 <div class="page-section-container">
 
   {% for section in page.sections %}
+  {% capture sectioncycle %}{% cycle 'odd', 'even' %}{% endcapture %}
   <section class="page-section page-section--{{ section.class }} {% cycle "section--light-grey-bg", "" %} section--padding-large" id="{{ section.class }}">
 
+
+    <!-- PAGE TRACK // track for section icons -->
     <div class="page-track">
       {% if forloop.first %}
       <a href="#{{ section.class }}" class="page-track__start">
@@ -23,23 +26,48 @@ layout: default
       </a>
     </div>
 
-    <div class="row row--padding page-section__title">
-      <h3 class="title title--lg page-section__title-main">{{ section.title }}</h3>
-    </div>
 
-    <div class="row row--padding row--columns-6-6-gutters">
-      <div class="row__column">
-        {{ section.content }}
+      <!-- SECTION TITLE -->
+      <div class="row row--padding page-section__title">
+        <h3 class="title title--lg page-section__title-main">{{ section.title }}</h3>
       </div>
-      {% for place in section.places %}
-      {% if place.featured %}
-        <div class="row__column">
-          {% include city-card.html class="large" %}
-        </div>
-      {% endif %}
-      {% endfor %}
-    </div>
 
+
+      <!-- FEATURED SECTION PLACE -->
+      <div class="row row--padding row--columns-6-6-gutters">
+        {% if sectioncycle == 'odd' %}
+
+          <div class="row__column">
+            {{ section.content }}
+          </div>
+
+          {% for place in section.places %}
+          {% if place.featured %}
+            <div class="row__column">
+              {% include city-card.html class="large" %}
+            </div>
+          {% endif %}
+          {% endfor %}
+
+        {% else %}
+
+          {% for place in section.places %}
+          {% if place.featured %}
+            <div class="row__column">
+              {% include city-card.html class="large" %}
+            </div>
+          {% endif %}
+          {% endfor %}
+
+          <div class="row__column">
+            {{ section.content }}
+          </div>
+
+        {% endif %}
+      </div>
+
+
+    <!-- SECTION PLACES -->
     <div class="row row--padding row--columns-4-4-4-gutters">
       {% for place in section.places %}
       {% unless place.featured %}
@@ -49,6 +77,8 @@ layout: default
       {% endunless %}
       {% endfor %}
     </div>
+
+
 
   </section>
   {% endfor %}
