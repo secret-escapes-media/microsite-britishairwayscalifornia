@@ -5,6 +5,89 @@ layout: default
 
 {% include banner.html %}
 
-{{ content }}
+
+
+
+<!-- SECTION CONTAINER -->
+<div class="roadtrip">
+
+
+  <div class="roadtrip__track">
+    <a href="#roadtrip" class="roadtrip__track__start">
+      <img src="{{ site.baseurl }}/img/icons/icon-arrow-down.svg" width="24" alt="">
+    </a>
+  </div>
+
+
+  <section class="section--light-grey-bg" id="roadtrip">
+    <div class="row row--padding row--columns-6-6-gutters">
+
+    {% for place in page.places %}
+      {% capture placecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+      {% if place.type == 'city' %}
+
+        <!-- CITY CARD -->
+        </div><!-- end 6-6 columns -->
+        <div class="row row--padding">
+          <a href="{{site.baseurl}}/{{ place.class }}" id="{{ place.class }}" data-place="{{ place.class }}" class="card card--overlay color-white align-center bg-image-ratio bg-image-ratio--21-9" style="background-image: url('{{ site.baseurl }}/img/bg/banner-{{ place.class }}.jpg');">
+            <div class="card__title card__title-center">
+              <h2 class="title title--md title--kerning-wide title--margin title--medium">{{ place.title }}</h3>
+              <p class="lead-paragraph">{{ place.description }}</p>
+            </div>
+          </a>
+        </div>
+        <div class="row row--padding row--columns-6-6-gutters"><!-- restart 6-6 columns -->
+
+      {% else %}
+
+        <a href="javascript:void();" id="{{ place.class }}" data-place="{{ place.class }}" class="js-open-modal row__column card card--{{ place.type }}">
+          <span class="card__icon">
+            <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="16" alt="">
+          </span>
+          <h3 class="title title--xs title--kerning-wide title--margin page-section__title">{{ place.title }}</h3>
+          <p>{{ place.description | truncate: 120 }}</p>
+        </a>
+
+      {% endif %}
+    {% endfor %}
+
+    </div>
+  </section>
+
+</div>
+
+
+
+<!-- BRITISH AIRWAYS // Section promoting BA, and flight details to current city -->
+{% include flights-section.html %}
+
+
+
+<!-- PLACE HIGHLIGHT MODAL
+     Modal containing all place highlights, showing only currently active highlight -->
+<div class="js-modal modal is-closed place-modal">
+
+  <div class="modal__wrap row">
+    <div class="modal__content row--padding">
+
+      {% for place in page.places %}
+      <div class="place-modal__item row row--columns-6-6 row--columns-vertical-align" id="place-modal__item-{{ place.class }}">
+        <div class="row__column place-modal__item__content">
+          <h2 class="title title--sm title--margin title--kerning-wide">{{ place.title }}</h2>
+          <p>{{ place.description }}</p>
+        </div>
+        <div class="row__column">
+          <div class="js-close-modal modal__close"></div>
+          <div
+            class="bg-image-ratio bg-image-ratio--3-2"
+            style="background-image: url('{{ site.baseurl }}/img/content/roadtrip/{{ place.class }}.jpg');">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
 
 

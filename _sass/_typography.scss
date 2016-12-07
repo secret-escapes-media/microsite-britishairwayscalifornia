@@ -5,7 +5,7 @@
 
 $core-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 $main-font-family: 'Oxygen', 'Helvetica Neue', sans-serif;
-$title-font-family: 'Arvo', 'Helvetica Neue', sans-serif;
+$title-font-family: 'Roboto Slab', 'Helvetica Neue', sans-serif;
 
 html { font-size:62.5%; }
 body,
@@ -35,29 +35,30 @@ h5, .h5 {
   color: $text-heading;
   font-family: $title-font-family;
   line-height: 1.2;
+  letter-spacing: 0.03em;
   + * { margin-top: .2em; }
 
-  &--extra-margin { margin-top: 1.5em; }
+  &--margin { margin-bottom: 0.5em; }
   &--sub-heading { margin-top: 0 !important; }
 
   &--xxl    { font-size: 5.16em; }
   &--xl   { font-size: 4.3em; }
-  &--lg    { font-size: 3.583em; }
-  &--md  { font-size: 2.488em; }
-  &--sm { font-size: 1.667em; }
+  &--lg    { font-size: 3.375em; }
+  &--md  { font-size: 2.986em; }
+  &--sm { font-size: 1.728em; }
   &--xs     { font-size: 1.2em; }
-  &--xxs    { font-size: 1em; }
+  &--xxs    { font-size: 0.9em; }
 
   &--light     { font-weight: 200; }
-  &--bold      { font-weight: 500; }
-  &--bolder    { font-weight: 600; }
+  &--medium     { font-weight: 300; }
+  &--bold      { font-weight: 600; }
+  &--bolder    { font-weight: 800; }
   &--expanded  { letter-spacing: .2em; }
   &--condense  { letter-spacing: 0; }
   &--tight     { line-height: .9; }
   &--lower     { text-transform: initial; }
 
   &--kerning-wide {
-    font-weight: 500;
     letter-spacing: 0.1em;
     line-height: .9;
   }
@@ -113,20 +114,22 @@ dl {
 .btn {
   @include transition;
   display:inline-block;
-  padding: .4em 1.5em;
+  padding: .6em 2em;
   border: 2px solid $partner-primary;
+  border-radius: 3px;
   color: $partner-primary;
+  font-family: $title-font-family;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: 600;
   &:hover {
     color: white;
     background-color: $partner-primary;
     text-decoration: none;
   }
-  * + & { margin-top: 1em; }
+  * + & { margin-top: 2em; }
 
   &--solid { color: white; border: 0; background-color: $partner-primary; }
   &--large { font-size: 1em; padding: .5em 3em; }
@@ -137,6 +140,8 @@ dl {
 
 p             { max-width: 820px; }
 p + *         { margin-top: 1em; }
+a             {}
+a:hover       { text-decoration: none; }
 li            { list-style-position: inside; }
 ul li         { list-style-type: disc; }
 ol li         { list-style-type: decimal; }
@@ -160,16 +165,19 @@ hr {
 .color-white {
   color: #fff;
   p,h1,h2,h3,h4,h5,h6,
-  .h1,.h2,.h3,.h4,.h5,.h6 { color: #fff; }
+  .h1,.h2,.h3,.h4,.h5,.h6,
+  .title { color: #fff; }
   hr { background-color: $white-15; }
   .btn { border: 2px solid #fff; color: #fff; }
+  .btn--solid { border: 0; }
 }
 
 .color-default {
   color: #fff;
   p { color: $text-paragraph; }
   h1,h2,h3,h4,h5,h6,
-  .h1,.h2,.h3,.h4,.h5,.h6 { color: $text-heading; }
+  .h1,.h2,.h3,.h4,.h5,.h6,
+  .title { color: $text-heading; }
   hr { background-color: $light-grey; }
   .btn { border: $partner-primary; color: $partner-primary; }
 }

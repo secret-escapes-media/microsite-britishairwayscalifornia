@@ -1,14 +1,19 @@
 
-<div class="card card-city card--{{ include.class }} color-white"
-  style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}-{{ place.class }}.jpg');">
+<a href="javascript:void();"
+  data-place="{{ place.class }}"
+  class="
+    card{% if include.class == 'feature' %} card--overlay{% endif %} color-white js-open-modal
+    {% if include.class %} card-{{ include.class }} {% endif %}
+    {% if include.ratio %} bg-image-ratio bg-image-ratio--{{ include.ratio }} {% endif %}"
+  style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}/{{ place.class }}.jpg');">
 
+
+  {% if include.class == 'feature' %}
   <div class="card__title">
-    {% if include.class == 'large' %}
-      <h4 class="title title--md">{{ place.title }}</h4>
-    {% else %}
-      <h4 class="title title--sm">{{ place.title }}</h4>
-      <p>{{ place.description | truncate: 75 }}</p>
-    {% endif %}
+    <span class="title--xxs title--bold title--kerning-wide">EDITOR'S PICK</span>
+    <h4 class="title title--md">{{ place.title }}</h4>
+    <p class="lead-paragraph">{{ place.description | truncate: 50 }}</p>
   </div>
+  {% endif %}
 
-</div>
+</a>

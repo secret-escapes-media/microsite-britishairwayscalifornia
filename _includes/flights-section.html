@@ -1,0 +1,31 @@
+<section id="flights" class="page-section section--light-grey-bg color-white section--padding-large" style="background-image: url({{ site.baseurl }}/img/bg/section-bg-flights.jpg);">
+
+
+
+  <!-- PAGE TRACK // track for section icons -->
+  <div class="page-track">
+    <a href="#flights" class="page-track__icon page-track__icon-flights">
+      <img src="{{ site.baseurl }}/img/icons/icon-flights.svg" width="24" alt="">
+    </a>
+  </div>
+
+
+
+  <div class="row row--padding">
+    <h3 class="title title--md title--medium title--kerning-wide title--margin page-section__title">
+      Getting to
+      {% if page.layout == 'city' %}
+        {{ page.title }}
+      {% else %}
+        California
+      {% endif %}
+    </h3>
+
+    <p class="lead-paragraph">Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    <p>Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+    <a href="#" class="btn btn--solid btn--large">Book now</a>
+    {% include partner-logo.html %}
+
+  </div>
+</section>

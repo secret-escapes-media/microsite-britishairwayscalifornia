@@ -57,10 +57,21 @@
     color: $white;
   }
 
-  // section sized to height of window
+  // overlay for text bright background image
+  &--overlay {
+    &:before {
+      content: "";
+      background-color: $black-66;
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      z-index: 0;
+    }
+  }
+
   &--padding {
     padding: 4em 0;
     &-small { padding: 2em 0; }
+    &-medium { padding: 6em 0; }
     &-large { padding: 10em 0; }
   }
 }
@@ -80,7 +91,7 @@
   &--title {
     font-family: $title-font-family;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 100;
     font-size: 3.8em;
     text-shadow: 0 0 35px rgba(14, 20, 32, 0.8);
     line-height: 1;
@@ -95,8 +106,60 @@
     text-shadow: 0 0 35px #aa7612;
   }
   &--content {
-    padding: 2em;
+    padding: 2em 0 3em;
     background-color: rgba($dark-grey, 0.65);
+  }
+}
+
+// ---------- Home page website overview ----------
+
+.overview {
+  min-height: 640px;
+  position: relative;
+  background-position: left top;
+  background-size: cover;
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    padding: 60px 0;
+    @include bp(large) {
+      width: 50%;
+      float: right;
+    }
+
+    &-pretitle,
+    &-title,
+    &-content {
+      display: block; margin-bottom: 15px;
+      text-shadow: 0 0 20px #6b5e44;
+    }
+    @include bp(large) {
+      &-title { margin-left: -80px; }
+    }
+
+  }
+
+  &__points {
+    position: absolute;
+    height: 100%; width: 50%;
+    top: 0; left: 0;
+  }
+  &__point {
+    position: absolute;
+    width: 12px; height: 12px;
+    margin-top: -6px; margin-left: -6px;
+    z-index: 1;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    background-color: $partner-primary;
+    &:hover {
+      background-color: $partner-secondary;
+    }
+    &-city {
+      width: 22px; height: 22px;
+      margin-top: -11px; margin-left: -11px;
+    }
   }
 }
 
@@ -105,47 +168,65 @@
 
 .page-section {
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__title {
+    position: relative;
+    text-transform: uppercase;
     &:before {
       content: "";
-      width: 5px;
+      width: 4px;
       height: 100%;
       position: absolute;
-      left: 0;
+      left: -30px;
       top: 0;
-    }
-    &-main { line-height: 1; }
-  }
-
-  &--culture {
-    .page-section__title {
-      &:before { background-color: #70b8ab; }
-      &-main { color: #70b8ab; }
+      line-height: 1;
     }
   }
 
-  &--food-and-drink {
-    .page-section__title {
-      &:before { background-color: #d08a00; }
-      &-main { color: #d08a00; }
+}
+
+#food-and-drink {
+  .page-section__title {
+    color: #d08a00;
+    &:before { background-color: #d08a00; }
+  }
+}
+
+#culture {
+  .page-section__title {
+    color: #70b8ab;
+    &:before { background-color: #70b8ab; }
+  }
+}
+
+#attractions {
+  .page-section__title {
+    color: #598619;
+    &:before { background-color: #598619; }
+  }
+}
+
+#shopping {
+  .page-section__title {
+    color: #8b66d0;
+    &:before { background-color: #8b66d0; }
+  }
+}
+
+#flights {
+  .page-section__title {
+    &:before { background-color: $partner-primary; }
+  }
+  .logo--partner {
+    display: inline-block;
+    line-height: 1;
+    margin-left: 30px;
+    &--img {
+      max-width: 160px;
     }
   }
-
-  &--attractions {
-    .page-section__title {
-      &:before { background-color: #598619; }
-      &-main { color: #598619; }
-    }
-  }
-
-  &--shopping {
-    .page-section__title {
-      &:before { background-color: #8b66d0; }
-      &-main { color: #8b66d0; }
-    }
-  }
-
 }
 
 
@@ -162,21 +243,22 @@
   left: 50%;
   margin-left: -630px;
   &__icon {
-    padding: 10px 5px; width: 50px; height: 50px; text-align: center;
+    padding: 11px 5px; width: 50px; height: 50px; text-align: center;
     position: fixed; bottom: 20px; margin-top: -25px; display: block;
     background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
 
-    &-1 { bottom: 200px; }
-    &-2 { bottom: 140px; }
-    &-3 { bottom: 80px; }
-    &-4 { bottom: 20px; }
-    &.scrolled { position: absolute; bottom: auto; top: 175px; }
-  }
+    &-start { bottom: 320px; }
+    &-1 { bottom: 260px; }
+    &-2 { bottom: 200px; }
+    &-3 { bottom: 140px; }
+    &-4 { bottom: 80px; }
+    &-flights {
+      bottom: 20px;
+      background-color: $partner-primary;
+    }
 
-  &__start {
-    padding: 10px 5px; width: 50px; height: 50px; text-align: center;
-    position: absolute; top: 0; margin-top: -25px; display: block;
-    background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
+    &.scrolled { position: absolute; bottom: auto; top: 170px; }
+    &-start.scrolled { top: 0; }
   }
 }
 
@@ -185,6 +267,7 @@
 
 .card {
   position: relative;
+  display: block;
   padding: 1.5em;
   border-radius: 5px;
   box-shadow: 0 0 5px $black-15;
@@ -193,28 +276,105 @@
   background-position: center;
   background-size: cover;
   & + & {
-    margin-top: 1em;
+    margin-top: 2em;
   }
-  &--large {
-    height: 260px;
-  }
-  &--medium {
-    height: 180px;
-  }
-  &--small {
-    height: 100px;
-  }
-
-  // Card style for city highlights
-  &-city {
-    background-color: $dark-grey;
+  &.bg-image-ratio {
+    padding: 0;
+    &.card--overlay {
+      &:before {
+        background-color: $black-25;
+      }
+    }
   }
   &__title {
     position: absolute;
     bottom: 1.5em;
     left: 1.5em;
     right: 1.5em;
+    &-center {
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__icon {
+    padding: 2px 5px; width: 40px; height: 40px; text-align: center;
+    position: absolute; top: -10px; right: -10px; display: block;
+    background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
+  }
+
+  // Small thumbnail square, to be paired with bg-image-ratio--1-1
+  &-thumbnail {
+    width: 100px; margin-right: 2em; float: left;
+  }
+
+  &--food-and-drink { border-bottom: 3px solid #d08a00; }
+  &--culture { border-bottom: 3px solid #70b8ab; }
+  &--attractions { border-bottom: 3px solid #598619; }
+  &--shopping { border-bottom: 3px solid #8b66d0; }
+}
+
+
+// ---------- Places highlighted for each town ----------
+.place {
+  margin-bottom: 1em;
+  &-section__title {
+    margin-top: 0 !important;
+    img { margin-bottom: -6px; }
+  }
+  &__content {
+    display: block;
+    float: left;
   }
 }
 
+.place-modal {
+  &__item {
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 2em 0;
+    display: none;
+    &-active { display: block; display: flex; }
+    &__content { padding: 1.5em 2em; }
+  }
+}
+
+
+// ---------- ROADTRIP ----------
+
+.roadtrip {
+  position: relative;
+
+  &__track {
+    background-image: url('../img/bg/page-section-track.png');
+    background-repeat: repeat-y;
+    background-position: center;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 50px;
+    top: 0;
+    left: 50%;
+    margin-left: -25px;
+
+    &__icon {
+      padding: 10px 5px; width: 50px; height: 50px; text-align: center;
+      position: fixed; bottom: 20px; margin-top: -25px; display: block;
+      background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
+    }
+    &__start {
+      padding: 10px 5px; width: 50px; height: 50px; text-align: center;
+      position: absolute; top: 0; margin-top: -25px; display: block;
+      background-color: #fff; border-radius: 40px; border: 1px solid $black-15;
+    }
+  }
+
+  &__place {
+    &--secret {}
+    &--local {}
+    &--city {}
+  }
+
+}
 

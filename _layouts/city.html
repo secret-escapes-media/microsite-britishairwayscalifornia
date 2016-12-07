@@ -11,15 +11,14 @@ layout: default
 
   {% for section in page.sections %}
   {% capture sectioncycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-  <section class="page-section page-section--{{ section.class }} {% cycle "section--light-grey-bg", "" %} section--padding-large" id="{{ section.class }}">
+
+  <section id="{{ section.class }}" class="page-section {% cycle "section--light-grey-bg", "" %} section--padding-large">
 
 
     <!-- PAGE TRACK // track for section icons -->
     <div class="page-track">
       {% if forloop.first %}
-      <a href="#{{ section.class }}" class="page-track__start">
-        <img src="{{ site.baseurl }}/img/icons/icon-arrow-down.svg" width="24" alt="">
-      </a>
+        <a href="#{{ section.class }}" class="page-track__icon page-track__icon-start"><img src="{{ site.baseurl }}/img/icons/icon-arrow-down.svg" width="24" alt=""></a>
       {% endif %}
       <a href="#{{ section.class }}" class="page-track__icon page-track__icon-{{ forloop.index }}">
         <img src="{{ site.baseurl }}/img/icons/icon-{{ section.class }}.svg" width="24" alt="">
@@ -27,52 +26,46 @@ layout: default
     </div>
 
 
-      <!-- SECTION TITLE -->
-      <div class="row row--padding page-section__title">
-        <h3 class="title title--lg page-section__title-main">{{ section.title }}</h3>
+    <!-- FEATURED SECTION PLACE -->
+    <div class="row row--padding row--columns-6-6-gutters">
+
+      <div class="row__column">
+        <h3 class="title title--md title--medium title--kerning-wide title--margin page-section__title">{{ section.title }}</h3>
+        {{ section.content }}
       </div>
 
+      {% for place in section.places %}
+      {% if place.featured %}
+        <div class="row__column">
+          {% include city-card.html class="feature" ratio="21-9" %}
+        </div>
+      {% endif %}
+      {% endfor %}
 
-      <!-- FEATURED SECTION PLACE -->
-      <div class="row row--padding row--columns-6-6-gutters">
-        {% if sectioncycle == 'odd' %}
+    </div>
 
-          <div class="row__column">
-            {{ section.content }}
-          </div>
 
-          {% for place in section.places %}
-          {% if place.featured %}
-            <div class="row__column">
-              {% include city-card.html class="large" %}
-            </div>
-          {% endif %}
-          {% endfor %}
-
-        {% else %}
-
-          {% for place in section.places %}
-          {% if place.featured %}
-            <div class="row__column">
-              {% include city-card.html class="large" %}
-            </div>
-          {% endif %}
-          {% endfor %}
-
-          <div class="row__column">
-            {{ section.content }}
-          </div>
-
-        {% endif %}
-      </div>
+    <!-- SECTION PLACES title -->
+    <div class="row row--padding place-section__title">
+      <h4 class="title title--kerning-wide">
+        EXPLORE OUR FAVOURITE CULTURAL HIGHLIGHTS
+        <img src="{{ site.baseurl }}/img/icons/arrow-highlights-culture.svg" width="24" alt="">
+      </h4>
+    </div>
 
 
     <!-- SECTION PLACES -->
-    <div class="row row--padding row--columns-4-4-4-gutters">
+    <div class="row row--padding row--columns-6-6-gutters">
       {% for place in section.places %}
       {% unless place.featured %}
-        <div class="row__column">
-          {% include city-card.html class="medium" %}
+        <div class="row__column place place--small row--columns-vertical-align">
+          {% include city-card.html class="thumbnail" ratio="1-1" %}
+          <div class="place__content">
+            <a href="javascript:void();" data-place="{{ place.class }}" class="js-open-modal">
+              <h4 class="title title--xs">{{ place.title }}</h4>
+              <p>{{ place.description | truncate: 55 }}</p>
+            </a>
+          </div>
         </div>
       {% endunless %}
       {% endfor %}
@@ -84,23 +77,74 @@ layout: default
   {% endfor %}
 
 
-  <section class="section--light-grey-bg section--padding-large section--flights" style="background-image: url({{ site.baseurl }}/img/bg/section-bg-flights.jpg);">
 
-    <div class="row row--padding section__title">
-      <h2 class="title title--sm title--kerning-wide section__title-pre">FLY WITH BRITISH AIRWAYS</h2>
-      <h3 class="title title--lg section__title-main">Getting to {{ page.title }}</h3>
-    </div>
+  <!-- BRITISH AIRWAYS // Section promoting BA, and flight details to current city -->
+  {% include flights-section.html %}
 
-    <div class="row row--padding row--columns-6-6-gutters">
 
-      <div class="row__column">
-        <p class="lead-paragraph">Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. </p>
-        <p>Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-        <a href="#" class="btn btn--solid">Book now</a>
+
+
+  <!-- NEXT STOP // Next city on the roadtrip
+       Get current page nav-order (acts as a page ID), plus 1 to get next page in nav-order -->
+  {% assign pages = site.pages | sort:"nav-order" %}
+  {% assign nextpagenum = page.nav-order | plus:1 %}
+  {% for nextPage in pages %}
+    {% if nextPage.nav-order == nextpagenum %}
+    {% if nextPage.layout == 'city' %}
+
+    <section id="next-stop" class="page-section section--overlay section--dark-grey-bg color-white section--padding-large" style="background-image: url({{ site.baseurl }}/img/bg/banner-{{ nextPage.class }}.jpg);">
+
+      <div class="row row--padding">
+        <h3 class="title title--md title--medium title--kerning-wide title--margin page-section__title">Next stop {{ nextPage.title }}</h3>
+
+        <p class="lead-paragraph">{{ nextPage.banner-content }}</p>
+
+        <a href="{{ nextPage.url }}" class="btn btn--solid btn--large">Ready to go?</a>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    {% endif %}
+    {% endif %}
+  {% endfor %}
+
+
 
 </div>
+
+
+
+
+
+
+
+<!-- PLACE HIGHLIGHT MODAL
+     Modal containing all place highlights, showing only currently active highlight -->
+<div class="js-modal modal is-closed place-modal">
+
+  <div class="modal__wrap row">
+    <div class="modal__content row--padding">
+
+      {% for section in page.sections %}
+      {% for place in section.places %}
+      <div class="place-modal__item row row--columns-6-6 row--columns-vertical-align" id="place-modal__item-{{ place.class }}">
+        <div class="row__column place-modal__item__content">
+          <h2 class="title title--sm title--margin title--kerning-wide">{{ place.title }}</h2>
+          <p>{{ place.description }}</p>
+        </div>
+        <div class="row__column">
+          <div class="js-close-modal modal__close"></div>
+          <div
+            class="bg-image-ratio bg-image-ratio--3-2"
+            style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}/{{ place.class }}.jpg');">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
 

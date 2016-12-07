@@ -82,6 +82,7 @@ section {
 @include bp(large){
 
   // two columns without gutter
+  .row--columns-3-9 { @include two-column-grid( 3, 9 ); }
   .row--columns-4-8 { @include two-column-grid( 4, 8 ); }
   .row--columns-5-7 { @include two-column-grid( 5, 7 ); }
   .row--columns-6-6 { @include two-column-grid( 6, 6 ); }
@@ -89,6 +90,7 @@ section {
   .row--columns-8-4 { @include two-column-grid( 8, 4 ); }
 
   // two columns with gutter
+  .row--columns-3-9-gutters { @include two-column-grid( 3, 9, gutters ); }
   .row--columns-4-8-gutters { @include two-column-grid( 4, 8, gutters ); }
   .row--columns-5-7-gutters { @include two-column-grid( 5, 7, gutters ); }
   .row--columns-6-6-gutters { @include two-column-grid( 6, 6, gutters ); }

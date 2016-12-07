@@ -60,22 +60,6 @@
 
 
 ///////////////////////////////////////
-//      Parallax
-//      [ example: <div class="parallax" data-parallax-speed="0.2"> ]
-///////////////////////////////////////
-
-  $(document).scroll(function(){
-    var scrolled = $(document).scrollTop();
-    $('.parallax').each(function(){
-      var speed = $(this).attr('data-parallax-speed');
-      var offset = $(this).offset();
-      var parallax = -(scrolled - offset.top) * speed ;
-      $(this).css('background-position', 'center ' + parallax + 'px');
-    });
-  });
-
-
-///////////////////////////////////////
 //    Generic modal
 ///////////////////////////////////////
 
@@ -83,52 +67,50 @@
       modalLaunchBtn = $('.js-open-modal'),
       modalCloseBtn  = $('.js-close-modal');
 
-    // opens modal
-    function modalOpen(event){
-      event.preventDefault();
-      // disable scrolling on background content (doesn't work iOS)
-      $('body').addClass('disable-scroll');
-      // // open modal
-      modal.fadeIn('250', function(){
-        $(this).removeClass('is-closed').addClass('is-open');
-      });
-    }
+  modalLaunchBtn.click(function(){
+    var place = $(this).attr('data-place');
+    $('.place-modal__item-active').removeClass('place-modal__item-active');
+    $('#place-modal__item-' + place ).addClass('place-modal__item-active');
 
-    // closes modal
-    function modalClose(event){
-      event.preventDefault();
-      // enable scrolling
-      $('body').removeClass('disable-scroll');
-      // close modal with fade
-      modal.fadeOut('250', function(){
-        $(this).removeClass('is-open').addClass('is-closed');
-      });
-    }
-
-    // launches modal when offer is clicked
-    modalLaunchBtn.on('click', function(event) {
-      modalOpen(event);
+    // disable scrolling on background content (doesn't work iOS)
+    $('body').addClass('disable-scroll');
+    // // open modal
+    modal.fadeIn('250', function(){
+      $(this).removeClass('is-closed').addClass('is-open');
     });
 
-    // closes modal on close icon click
-    modalCloseBtn.on('click', function(event) {
-      modalClose(event);
-    });
+  });
 
-    // closes modal on background click
-    modal.on('click', function(event) {
-      if (event.target !== this){
-        return;
+  // closes modal
+  function modalClose(event){
+    event.preventDefault();
+    // enable scrolling
+    $('body').removeClass('disable-scroll');
+    // close modal with fade
+    modal.fadeOut('250', function(){
+      $(this).removeClass('is-open').addClass('is-closed');
+    });
+  }
+
+  // closes modal on close icon click
+  modalCloseBtn.on('click', function(event) {
+    modalClose(event);
+  });
+
+  // closes modal on background click
+  modal.on('click', function(event) {
+    if (event.target !== this){
+      return;
+    }
+    modalClose(event);
+  });
+
+  // closes modal on escape key press
+  $(document).keyup(function(event) {
+     if (event.keyCode == 27) {
+       modalClose(event);
       }
-      modalClose(event);
-    });
-
-    // closes modal on escape key press
-    $(document).keyup(function(event) {
-       if (event.keyCode == 27) {
-         modalClose(event);
-        }
-    });
+  });
 
 
 ///////////////////////////////////////
@@ -137,27 +119,62 @@
 ///////////////////////////////////////
 
 function pageTrack( sectionClass, sectionOffset ){
+  if($(sectionClass).length){
+    var st = $(document).scrollTop();
+    var scrollOffset = $(window).height() - sectionOffset;
+    var section = $(sectionClass).offset();
 
-  var st = $(document).scrollTop();
-  var scrollOffset = $(window).height() - sectionOffset;
-  var section = $(sectionClass).offset();
-
-  if( ( st + scrollOffset ) > section.top ){
-    $(sectionClass).find('.page-track__icon').addClass('scrolled');
-  }else{
-    $(sectionClass).find('.page-track__icon').removeClass('scrolled');
+    if( ( st + scrollOffset ) > section.top ){
+      $(sectionClass).find('.page-track__icon').addClass('scrolled');
+    }else{
+      $(sectionClass).find('.page-track__icon').removeClass('scrolled');
+    }
   }
-
 };
 
 $(document).scroll(function(){
-  pageTrack('.page-section--food-and-drink',400);
-  pageTrack('.page-section--culture',340);
-  pageTrack('.page-section--attractions',280);
-  pageTrack('.page-section--shopping',220);
+  pageTrack('#food-and-drink',455);
+  pageTrack('#culture',395);
+  pageTrack('#attractions',335);
+  pageTrack('#shopping',275);
+  pageTrack('#flights',215);
+});
+
+// Separate function for first icon
+$(document).scroll(function(){
+  if($('#food-and-drink').length){
+    var st = $(document).scrollTop();
+    var scrollOffset = $(window).height() - 340;
+    var sectionClass = '#food-and-drink';
+    var section = $(sectionClass).offset();
+
+    if( ( st + scrollOffset ) > section.top ){
+      $(sectionClass).find('.page-track__icon-start').addClass('scrolled');
+    }else{
+      $(sectionClass).find('.page-track__icon-start').removeClass('scrolled');
+    }
+  }
 });
 
 
+///////////////////////////////////////
+//      Size height to fullscreen window height
+//      .js-fullscreen-section
+///////////////////////////////////////
+
+function overviewResize(){
+  var width  = $(window).width();
+  var height = width / 1.6666666667;
+  $('.js-overview').css('height', height + 'px');
+};
+
+$(window).resize(function(){
+  overviewResize();
+});
+
+$(document).ready(function(){
+  overviewResize();
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////
