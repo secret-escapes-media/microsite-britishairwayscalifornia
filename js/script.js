@@ -65,12 +65,13 @@
 
   var modal          = $('.js-modal'),
       modalLaunchBtn = $('.js-open-modal'),
-      modalCloseBtn  = $('.js-close-modal');
+      modalCloseBtn  = $('.js-close-modal'),
+      modalCloseAreas  = $('.modal__content, .js-modal');
 
   modalLaunchBtn.click(function(){
     var place = $(this).attr('data-place');
-    $('.place-modal__item-active').removeClass('place-modal__item-active');
-    $('#place-modal__item-' + place ).addClass('place-modal__item-active');
+    $('.modal__item-active').removeClass('modal__item-active');
+    $('#modal__item-' + place ).addClass('modal__item-active');
 
     // disable scrolling on background content (doesn't work iOS)
     $('body').addClass('disable-scroll');
@@ -98,7 +99,7 @@
   });
 
   // closes modal on background click
-  modal.on('click', function(event) {
+  modalCloseAreas.on('click', function(event) {
     if (event.target !== this){
       return;
     }

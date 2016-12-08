@@ -61,8 +61,18 @@
       background-image: url('../img/icons/close.svg');
     }
   }
-}
 
+  &__item {
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 2em 0;
+    display: none;
+    &-active { display: block; display: flex; }
+    &__content { padding: 1.5em 2em; }
+    &__icon { position: absolute; top: -10px; left: -10px; }
+  }
+
+}
 .disable-scroll {
   overflow: hidden;
 }

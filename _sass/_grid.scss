@@ -16,6 +16,10 @@ $margin: 2em;
 // -------- grid sections --------
 
 section {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   padding-top: 2.25em;
   padding-bottom: 2.25em;
   @include bp(large) {

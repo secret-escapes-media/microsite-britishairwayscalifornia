@@ -13,7 +13,7 @@ layout: default
 
 
   <div class="roadtrip__track">
-    <a href="#roadtrip" class="roadtrip__track__start">
+    <a href="#roadtrip" class="icon icon--large roadtrip__track__start">
       <img src="{{ site.baseurl }}/img/icons/icon-arrow-down.svg" width="24" alt="">
     </a>
   </div>
@@ -41,11 +41,18 @@ layout: default
       {% else %}
 
         <a href="javascript:void();" id="{{ place.class }}" data-place="{{ place.class }}" class="js-open-modal row__column card card--{{ place.type }}">
-          <span class="card__icon">
-            <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="16" alt="">
-          </span>
-          <h3 class="title title--xs title--kerning-wide title--margin page-section__title">{{ place.title }}</h3>
-          <p>{{ place.description | truncate: 120 }}</p>
+          {% if place.image != false %}
+          <div class="card__image bg-image-ratio bg-image-ratio--1-1"
+            style="background-image: url('{{ site.baseurl }}/img/content/roadtrip/{{ place.class }}.jpg');">
+          </div>
+          {% endif %}
+          <div class="card__content">
+            <span class="icon card__icon">
+              <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="16" alt="">
+            </span>
+            <h3 class="title title--xs title--kerning-wide title--margin page-section__title">{{ place.title }}</h3>
+            <p>{{ place.description | truncate: 90 }}</p>
+          </div>
         </a>
 
       {% endif %}
@@ -65,14 +72,17 @@ layout: default
 
 <!-- PLACE HIGHLIGHT MODAL
      Modal containing all place highlights, showing only currently active highlight -->
-<div class="js-modal modal is-closed place-modal">
+<div class="js-modal modal is-closed">
 
   <div class="modal__wrap row">
     <div class="modal__content row--padding">
 
       {% for place in page.places %}
-      <div class="place-modal__item row row--columns-6-6 row--columns-vertical-align" id="place-modal__item-{{ place.class }}">
-        <div class="row__column place-modal__item__content">
+      <div class="modal__item row row--columns-6-6 row--columns-vertical-align" id="modal__item-{{ place.class }}">
+        <span class="icon icon--large modal__item__icon">
+          <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="24" alt="">
+        </span>
+        <div class="row__column modal__item__content">
           <h2 class="title title--sm title--margin title--kerning-wide">{{ place.title }}</h2>
           <p>{{ place.description }}</p>
         </div>
