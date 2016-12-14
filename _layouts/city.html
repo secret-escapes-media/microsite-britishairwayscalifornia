@@ -6,7 +6,15 @@ layout: default
 {% include banner.html %}
 
 
-<!-- SECTION CONTAINER -->
+<section class="section--partner-bg color-white">
+  <div class="row align-center">
+    <h2 class="title title--xs title--kerning-wide title--margin-lg">{{ page.flight-details | upcase }}</h2>
+    <p>
+      <a href="#" class="btn">Book now</a>
+      <img width="160" class="img--inline" src="{{ site.baseurl }}/img/logo/british-airways.svg" alt="British Airways Logo">
+    </p>
+  </div>
+</section>
 
 {% for section in page.sections %}
 {% capture sectioncycle %}{% cycle 'odd', 'even' %}{% endcapture %}
@@ -29,7 +37,7 @@ layout: default
   <div class="row row--padding row--columns-6-6-gutters">
 
     <div class="row__column">
-      <h3 class="title title--md title--medium title--kerning-wide title--margin section__title">{{ section.title }}</h3>
+      <h3 class="title title--md title--medium title--kerning-wide title--margin-sm section__title">{{ section.title }}</h3>
       {{ section.content }}
     </div>
 
@@ -44,10 +52,10 @@ layout: default
   </div>
 
 
-  <!-- SECTION PLACES title -->
+  <!-- SECTION PLACES TITLE -->
   <div class="row row--padding place-section__title">
     <h4 class="title title--kerning-wide">
-      EXPLORE OUR FAVOURITE CULTURAL HIGHLIGHTS
+      EXPLORE OUR {{ page.title | upcase }} TOP PICKS
       <img src="{{ site.baseurl }}/img/icons/arrow-highlights-culture.svg" width="24" alt="">
     </h4>
   </div>
@@ -58,13 +66,30 @@ layout: default
     {% for place in section.places %}
     {% unless place.featured %}
       <div class="row__column place-section__item row--columns-vertical-align">
-        {% include city-card.html class="thumbnail" ratio="1-1" %}
-        <div>
+        <a
+          href="javascript:void();"
+          data-place="{{ place.class }}"
+          style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}/{{ place.class }}.jpg');"
+          class="{% if place.secret %}card-secret {% endif %}card color-white js-open-modal card-thumbnail bg-image-ratio bg-image-ratio--1-1">
+            {% if place.secret %}
+            <span class="card__caption title title--xxs">SECRET</span>
+            {% endif %}
+          </a>
+
+        <div class="place-section__item-content">
           <a href="javascript:void();" data-place="{{ place.class }}" class="js-open-modal">
-            <h4 class="title title--xs">{{ place.title }}</h4>
-            <p>{{ place.description | truncate: 55 }}</p>
+            <h4 class="title title--xs">
+              {{ place.title }}
+              {% if place.experts-pick %}
+              <span class="expert__image expert__image--small">
+                <img src="{{ site.baseurl }}/img/content/{{ page.class }}/expert.jpg" alt="" width="100%">
+              </span>
+              {% endif %}
+            </h4>
+            <p>{{ place.description | truncate: 50 }}</p>
           </a>
         </div>
+
       </div>
     {% endunless %}
     {% endfor %}
@@ -91,16 +116,24 @@ layout: default
   {% if nextPage.nav-order == nextpagenum %}
   {% if nextPage.layout == 'city' %}
 
-  <section id="next-stop" class="section--overlay section--dark-grey-bg color-white section--padding-large" style="background-image: url({{ site.baseurl }}/img/bg/banner-{{ nextPage.class }}.jpg);">
+  <section id="next-stop" class="section--dark-grey-bg section--overlay color-white section--padding-none next-stop" style="background-image: url({{ site.baseurl }}/img/bg/banner-{{ nextPage.class }}.jpg);">
 
-    <div class="row row--padding">
-      <h3 class="title title--md title--medium title--kerning-wide title--margin section__title">Next stop {{ nextPage.title }}</h3>
+    <div class="row row--padding row--columns-7-5-gutters row--columns-vertical-align">
 
-      <p class="lead-paragraph">{{ nextPage.banner-content }}</p>
+      <div class="next-stop__content row__column section--padding-large">
+        <h3 class="title title--md title--medium title--kerning-wide">Next stop {{ nextPage.title }}</h3>
+        <p>{{ nextPage.banner-content | strip_html }}</p>
+      </div>
 
-      <a href="{{ nextPage.url }}" class="btn btn--solid btn--large">Ready to go?</a>
+      <div class="next-stop__button row__column align-center section--overlay">
+        <a href="{{ nextPage.url }}" class="next-stop__button-content">
+          <h4 class="title title--xs title--bold">{{ page.distance-to | upcase }}</h4>
+          <span class="btn btn--large">Ready to go?</span>
+        </a>
+      </div>
 
     </div>
+
   </section>
 
   {% endif %}
@@ -125,8 +158,28 @@ layout: default
           <img src="{{ site.baseurl }}/img/icons/icon-{{ section.class }}.svg" width="24" alt="">
         </span>
         <div class="row__column modal__item__content">
-          <h2 class="title title--sm title--margin title--kerning-wide">{{ place.title }}</h2>
-          <p>{{ place.description }}</p>
+
+          {% if place.secret %}
+          <span class="modal__item__label">
+            SECRET
+          </span>
+          {% endif %}
+
+          {% if place.experts-pick %}
+            <h2 class="title title--sm title--margin title--kerning-wide">
+              {{ place.title }}
+              <span class="expert__image">
+                <img src="{{ site.baseurl }}/img/content/{{ page.class }}/expert.jpg" alt="" width="100%">
+              </span>
+            </h2>
+            <p class="lead-paragraph"><em>"{{ place.description }}"</em></p>
+          {% else %}
+            <h2 class="title title--sm title--margin-sm title--kerning-wide">
+              {{ place.title }}
+            </h2>
+            <p>{{ place.description }}</p>
+          {% endif %}
+
         </div>
         <div class="row__column">
           <div class="js-close-modal modal__close"></div>

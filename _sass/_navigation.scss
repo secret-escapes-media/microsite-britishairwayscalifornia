@@ -274,11 +274,10 @@ $mobile-nav-width: 75%;
 }
 
 $icon-size: 27px;
-.icon {
+.nav-btn {
   display: inline-block;
   height: $icon-size;
   width: $icon-size;
-  cursor: pointer;
   vertical-align: middle;
   background-position: center;
   background-repeat: no-repeat;
@@ -300,8 +299,21 @@ $icon-size: 27px;
     &--img { max-width: 180px; }
   }
   &--partner {
-    display: block;
+    display: inline-block;
     line-height: 0;
+    margin-right: 5px;
     &--img { max-width: 130px; }
+  }
+  &--tb {
+    display: inline-block;
+    line-height: 0;
+    margin-left: 5px;
+    &--img { max-width: 140px; }
+
+    &-oakland img { max-width: 90px; }
+    &-san-francisco img { max-width: 90px; }
+    &-los-angeles img { max-width: 140px; }
+    &-san-diego img { max-width: 90px; }
+    &-roadtrip img { max-width: 90px; }
   }
 }

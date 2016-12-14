@@ -31,7 +31,7 @@ layout: default
         <div class="row row--padding">
           <a href="{{site.baseurl}}/{{ place.class }}" id="{{ place.class }}" data-place="{{ place.class }}" class="card card--overlay color-white align-center bg-image-ratio bg-image-ratio--21-9" style="background-image: url('{{ site.baseurl }}/img/bg/banner-{{ place.class }}.jpg');">
             <div class="card__title card__title-center">
-              <h2 class="title title--md title--kerning-wide title--margin title--medium">{{ place.title }}</h3>
+              <h2 class="title title--md title--kerning-wide title--margin-sm title--medium">{{ place.title }}</h3>
               <p class="lead-paragraph">{{ place.description }}</p>
             </div>
           </a>
@@ -40,19 +40,28 @@ layout: default
 
       {% else %}
 
-        <a href="javascript:void();" id="{{ place.class }}" data-place="{{ place.class }}" class="js-open-modal row__column card card--{{ place.type }}">
-          {% if place.image != false %}
+        <a href="javascript:void();" id="{{ place.class }}" data-place="{{ place.class }}" class="js-open-modal row__column card">
+
           <div class="card__image bg-image-ratio bg-image-ratio--1-1"
             style="background-image: url('{{ site.baseurl }}/img/content/roadtrip/{{ place.class }}.jpg');">
           </div>
-          {% endif %}
+
           <div class="card__content">
-            <span class="icon card__icon">
-              <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="16" alt="">
+            {% if place.secret %}
+            <span class="card__label">
+              SECRET
             </span>
-            <h3 class="title title--xs title--kerning-wide title--margin page-section__title">{{ place.title }}</h3>
-            <p>{{ place.description | truncate: 90 }}</p>
+            {% endif %}
+            <h3 class="title title--xs title--kerning-wide title--margin-sm page-section__title">{{ place.title }}</h3>
+            <p>{{ place.description | truncate: 80 }}</p>
           </div>
+
+          {% if place.distance %}
+          <div class="card__distance">
+            {{ place.distance | upcase }}
+          </div>
+          {% endif %}
+
         </a>
 
       {% endif %}
@@ -79,13 +88,24 @@ layout: default
 
       {% for place in page.places %}
       <div class="modal__item row row--columns-6-6 row--columns-vertical-align" id="modal__item-{{ place.class }}">
-        <span class="icon icon--large modal__item__icon">
-          <img src="{{ site.baseurl }}/img/icons/icon-{{ place.type }}.svg" width="24" alt="">
-        </span>
+
         <div class="row__column modal__item__content">
-          <h2 class="title title--sm title--margin title--kerning-wide">{{ place.title }}</h2>
+
+          {% if place.secret %}
+          <span class="modal__item__label">
+            SECRET
+          </span>
+          {% endif %}
+
+          <h2 class="title title--sm title--margin-sm title--kerning-wide">{{ place.title }}</h2>
           <p>{{ place.description }}</p>
+          {% if place.distance %}
+          <div class="modal__item__distance">
+            {{ place.distance | upcase }}
+          </div>
+          {% endif %}
         </div>
+
         <div class="row__column">
           <div class="js-close-modal modal__close"></div>
           <div

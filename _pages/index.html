@@ -6,11 +6,60 @@ nav-order: 1
 
 banner-title: California
 banner-content: >
-  <p class="lead-paragraph">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <p>Sed posuere consectetur est at lobortis. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue.</p>
+  <p class="lead-paragraph">What better way to explore this vibrant state than by embarking on the all-American road trip.</p>
 
 intro: >
-  <p class="lead-paragraph">Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+  <p class="lead-paragraph">California needs little introduction; it has been immortalised on screen, on record, and has permeated popular culture globally.</p>
+  <p>It is a leading creative powerhouse on the world stage, and has framed cultural revolutions, from boom to bust and from gold to tech. With a dazzling diversity of landscapes – from lush National Park treasures to barren desert scapes, and from dense urban centres to charming small town America – California offers a vast range of experiences for any savvy traveller. </p>
+  <p>What better way to explore this vibrant state than by embarking on the all-American road trip. With flights from British Airways landing you in comfort to four of California’s most buzzing cities, you’ll be set to hop into your chosen vehicle and go exploring...</p>
 
 ---
 
+
+
+<section
+  class="site-header__offset color-white overview js-overview"
+  style="background-image: url({{ site.baseurl }}/img/bg/overview-background.jpg)">
+
+  <div class="row row--padding overview__content-wrap">
+    <div class="overview__content">
+      <span class="overview__content-pretitle title title--sm title--kerning-wide title--medium">EXPERIENCE</span>
+      <span class="overview__content-title title title--xxl title--kerning-wide title--medium">CALIFORNIA</span>
+      {{ page.banner-content }}
+      <a href="{{ site.baseurl }}/roadtrip" class="btn btn--solid btn--large">Explore California</a>
+    </div>
+  </div>
+
+  <div class="overview__points">
+    {% assign pages = site.pages where: "class", "roadtrip" %}
+    {% for page in pages %}
+    {% for place in page.places %}
+      {% if place.position %}
+        <a
+          href="
+            {% if place.type == 'city' %}
+              {{ site.baseurl }}/{{ place.class }}
+            {% else %}
+              {{ site.baseurl }}{{ page.url }}#{{ place.class }}
+            {% endif %}"
+          class="overview__point{% if place.type == 'city' %} overview__point--large {% endif %}{% if place.type == 'large' %} overview__point--medium {% endif %}"
+          style="{{ place.position }}">
+          <span class="overview__point-label">{{ place.title }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+    {% endfor %}
+  </div>
+
+</section>
+
+
+<section class="section--partner-bg color-white align-center">
+  <div class="row row--padding">
+    {{ page.intro }}
+  </div>
+</section>
+
+
+
+{% include flights-section.html %}

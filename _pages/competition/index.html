@@ -6,7 +6,7 @@ nav-order: 8
 
 banner-title:
 banner-content: >
-  <p class="lead-paragraph">Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+  <p class="lead-paragraph">Enter here for your chance to win an exclusive holiday in the home of eternal sunshine</p>
 
 intro: >
   <p class="lead-paragraph">Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
@@ -26,20 +26,25 @@ sections:
 ---
 
 
-{% for section in page.sections %}
 
-<section id="{{ section.class }}" class="page-section {% cycle "section--light-grey-bg", "" %}">
+<section class="">
 
-  <div class="row row--padding row--columns-6-6-gutters">
+  <div class="row row--padding row--columns-5-7-gutters row--columns-vertical-align">
 
     <div class="row__column">
-      <h3 class="title title--md title--medium title--kerning-wide title--margin page-section__title">{{ section.title }}</h3>
-      {{ section.content }}
+      <div class="card bg-image-ratio bg-image-ratio--3-2" style="background-image: url('{{ site.baseurl }}/img/content/competition-los-angeles.jpg');">
+      </div>
+    </div>
+
+    <div class="row__column">
+      <p class="lead-paragraph">Shed off the winter blues and dream of winning the chance to explore this varied and magnificent state.</p>
+      <p>Immerse yourself in our city guides, discovering cultural treasures bucket-list adventures before unearthing hidden gems and epic landscapes in our road trip page. Realise the Californian dream by entering our competition, which offers a choice of four exclusive packages, courtesy of British Airways.</p>
+      <p>Lucky winners will have the chance to pick from a five night break in LA, San Diego or San Francisco, flights included,  or a seven day fly and drive from either Oakland or San Jose.</p>
     </div>
 
   </div>
 
 </section>
 
-{% endfor %}
+
 

@@ -4,7 +4,7 @@
 // -------- root typography styles --------
 
 $core-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-$main-font-family: 'Oxygen', 'Helvetica Neue', sans-serif;
+$main-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 $title-font-family: 'Roboto Slab', 'Helvetica Neue', sans-serif;
 
 html { font-size:62.5%; }
@@ -38,13 +38,16 @@ h5, .h5 {
   letter-spacing: 0.03em;
   + * { margin-top: .2em; }
 
-  &--margin { margin-bottom: 0.5em; }
+  &--margin-sm { margin-bottom: 0.5em; }
+  &--margin { margin-bottom: 1em; }
+  &--margin-lg { margin-bottom: 1.5em; }
   &--sub-heading { margin-top: 0 !important; }
 
-  &--xxl    { font-size: 5.16em; }
-  &--xl   { font-size: 4.3em; }
+  &--xxl    { font-size: 3.375em; }
+  &--xl   { font-size: 3.375em; }
   &--lg    { font-size: 3.375em; }
   &--md  { font-size: 2.986em; }
+  &--regular { font-size: 2.2em; }
   &--sm { font-size: 1.728em; }
   &--xs     { font-size: 1.2em; }
   &--xxs    { font-size: 0.9em; }
@@ -59,7 +62,12 @@ h5, .h5 {
   &--lower     { text-transform: initial; }
 
   &--kerning-wide {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
+  }
+
+  @include bp(large) {
+    &--xxl    { font-size: 5.16em; }
+    &--xl   { font-size: 4.3em; }
   }
 
 }
@@ -83,18 +91,26 @@ dl {
   &--horizontal {
     list-style: none; padding: 0; margin: 0;
     li {
-      display: inline-block; position: relative; padding: 0 1em;
+      width: 100%;
+      display: inline-block;
+      position: relative;
+      padding: 0 1em;
+      @include bp(large) {
+        width: auto;
+      }
     }
-    li + li:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      display: block;
-      height: 100%;
-      width: 1px;
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-50%);
+    @include bp(large) {
+      li + li:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        height: 100%;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-50%);
+      }
     }
   }
   &--lined {
@@ -129,9 +145,11 @@ dl {
     text-decoration: none;
   }
   * + & { margin-top: 2em; }
+  & + & { margin-left: 0.5em; }
 
   &--solid { color: white; border: 0; background-color: $partner-primary; }
   &--large { font-size: 1em; padding: .5em 3em; }
+  &--small { font-size: 0.8em; padding: .4em 1.5em .5em; }
 }
 
 
@@ -152,13 +170,18 @@ strong        { font-weight: 800; }
 p.align-center,
 .align-center p { margin-left: auto; margin-right: auto; }
 
-.lead-paragraph { font-size: 1.3em; line-height: 1.6; }
+@include bp(large) {
+  .lead-paragraph { font-size: 1.3em; line-height: 1.6; }
+}
+
+
 
 hr {
   border: 0;
   height: 1px;
   background-color: $light-grey;
   margin: 1em 0;
+  &.hr--left { height: 2px; width: 100px; margin: 1em 0 !important; }
 }
 
 .color-white {
@@ -166,9 +189,9 @@ hr {
   p,h1,h2,h3,h4,h5,h6,
   .h1,.h2,.h3,.h4,.h5,.h6,
   .title { color: #fff; }
-  hr { background-color: $white-15; }
+  hr { background-color: $white-25; }
   .btn { border: 2px solid #fff; color: #fff; }
-  .btn--solid { border: 0; }
+  .btn--solid { border: 0; background-color: #fff; color: $partner-primary; }
 }
 
 .color-default {
@@ -179,4 +202,18 @@ hr {
   .title { color: $text-heading; }
   hr { background-color: $light-grey; }
   .btn { border: $partner-primary; color: $partner-primary; }
+  .btn--solid { border: 0; background-color: $partner-primary; color: #fff; }
 }
+
+
+
+// Images
+
+.img--inline {
+  display: inline-block;
+  line-height: 1;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+

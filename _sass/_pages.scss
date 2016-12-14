@@ -1,0 +1,250 @@
+
+
+/*=========================================================
+   ---------- PAGE SPECIFIC LAYOUTS ----------
+=========================================================*/
+
+// ---------- OVERVIEW PAGE ----------
+
+.overview {
+  min-height: 640px;
+  position: relative;
+  background-position: left top;
+  background-size: cover;
+  border-bottom: 5px solid $partner-tertiary;
+
+  &__content {
+
+    &-wrap {
+      padding-top: 6em;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      @include bp(xlarge) {
+        z-index: auto;
+        height: auto;
+        background-color: transparent;
+        position: relative;
+        display: block;
+        padding-top: 0;
+      }
+    }
+
+    position: relative;
+    z-index: 10;
+    padding: 60px 0;
+    width: 100%;
+    float: left;
+
+    @include bp(xlarge) {
+      width: 50%;
+      float: right;
+    }
+
+
+    &-pretitle, &-title, &-content { display: block; margin: 0; }
+    @include bp(xlarge) {
+      &-title { margin-left: -80px; }
+    }
+  }
+
+  // Map point placement
+  &__points {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    min-width: 530px;
+    top: 0; left: 0;
+  }
+  &__point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    margin-left: -5px;
+    z-index: 1;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    background-color: $partner-primary;
+    &:hover { background-color: $partner-secondary; z-index: 10;}
+
+    &--medium {
+      width: 14px; height: 14px;
+      margin-top: -7px; margin-left: -7px;
+    }
+    &--large {
+      width: 22px; height: 22px;
+      margin-top: -11px; margin-left: -11px;
+    }
+
+    &-label {
+      @include transition();
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      margin-top: -12px;
+      height: 24px;
+      padding: 2px 15px;
+      background-color: #172e4d;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: $title-font-family;
+      border-radius: 3px;
+      white-space: nowrap;
+      .overview__point:hover & { opacity: 1; }
+
+      .overview__point--medium & { left: 20px; }
+      .overview__point--large & { left: 25px; }
+    }
+  }
+}
+
+
+// ---------- CITY PAGE ----------
+
+// Page icon track
+.page-track {
+  background-image: url('../img/bg/page-section-track.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  position: absolute;
+  height: 100%;
+  width: 50px;
+  top: 0;
+  left: 50%;
+  margin-left: -630px;
+  &__icon {
+    position: fixed;
+    bottom: 20px;
+    margin-top: -25px;
+    cursor: pointer;
+
+    &-start { bottom: 320px; }
+    &-1 { bottom: 260px; }
+    &-2 { bottom: 200px; }
+    &-3 { bottom: 140px; }
+    &-4 { bottom: 80px; }
+    &.scrolled { position: absolute; bottom: auto; top: 175px; }
+    &-start.scrolled { top: 0; }
+
+    &-flights {
+      bottom: 20px;
+      background-color: $partner-primary;
+      &.scrolled { top: 120px; }
+    }
+  }
+}
+
+// Places highlighted for each town
+.place-section {
+  &__title {
+    display: none;
+    @include bp(large) {
+      display: block;
+    }
+    margin-top: 0 !important;
+    img { margin-bottom: -6px; }
+  }
+  &__item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1em;
+    @include bp(large) {
+
+    }
+    &-content {
+      padding: 1em 0;
+    }
+  }
+}
+
+// Next stop
+.next-stop {
+
+  &__content {
+    position: relative; z-index: 1; text-align: center; padding: 3em 0;
+  }
+  &__button {
+    position: relative; z-index: 1; padding: 3em 0;
+    &-content { position: relative; z-index: 1; }
+  }
+
+  @include bp(large) {
+    &__content { text-align: left; }
+    &__button {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 0;
+      &-content {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+
+// ---------- EXPERT SECTION ----------
+
+.expert {
+  @include transition();
+  background-color: $black-5;
+  padding: 0 0;
+  box-sizing: content-box;
+  overflow: hidden;
+  &.expanded { padding: 3em 0 4em; }
+  // reused for expert icon
+  &__image {
+    display: inline-block;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 2px solid $black-15;
+    margin: 0 8px;
+    margin-bottom: -15px;
+    &--small {
+      width: 25px;
+      height: 25px;
+      margin: 0 5px;
+      margin-bottom: -5px;
+    }
+  }
+}
+
+
+
+// ---------- ROADTRIP PAGE ----------
+
+.roadtrip {
+  position: relative;
+  &__track {
+    background-image: url('../img/bg/page-section-track.png');
+    background-repeat: repeat-y;
+    background-position: center;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 50px;
+    top: 0;
+    left: 50%;
+    margin-left: -25px;
+    &__start {
+      position: absolute;
+      top: 0;
+      margin-top: -25px;
+      display: block;
+    }
+  }
+}
+

@@ -18,8 +18,8 @@
 
     position: absolute;
     top: 0;
-    left: ($margin / 2);
-    right: ($margin / 2);
+    left: 0;
+    right: 0;
     bottom: 0;
     cursor: auto;
     overflow-y: auto;
@@ -67,11 +67,49 @@
     border-radius: 3px;
     margin: 2em 0;
     display: none;
-    &-active { display: block; display: flex; }
-    &__content { padding: 1.5em 2em; }
-    &__icon { position: absolute; top: -10px; left: -10px; }
-  }
+    &-active {
+      display: block;
+      @include bp(large) { display: flex; }
+    }
+    &__content {
+      padding: 2.5em 1.5em 1em;
+      @include bp(large) {
+        padding: 1.5em 2em;
+      }
+    }
+    &__icon { position: absolute; top: -15px; left: -15px; z-index: 1; }
+    &__label {
+      position: absolute;
+      top: 0;
+      border-radius: 0 0 3px 3px;
+      padding: 1px 20px;
 
+      display: inline-block;
+      margin-bottom: 1em;
+      background-color: $black-85;
+
+      color: #fff;
+      font-family: $title-font-family;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    &__distance {
+      padding: 4px 15px;
+      border-top: 1px solid $black-15;
+      width: 100%;
+      font-size: 0.8em;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      z-index: 0;
+      @include bp(large) {
+        position: absolute;
+        bottom: 0; left: 0;
+        padding: 4px 30px;
+      }
+    }
+  }
 }
 .disable-scroll {
   overflow: hidden;

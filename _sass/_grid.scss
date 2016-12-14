@@ -19,7 +19,8 @@ section {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  
+  background-position: center;
+
   padding-top: 2.25em;
   padding-bottom: 2.25em;
   @include bp(large) {
@@ -30,6 +31,12 @@ section {
 
 .row {
   @include container( $xxxlarge );
+  position: relative;
+  & + .row { margin-top: $margin; }
+}
+
+.row-thin {
+  @include container( $xxlarge );
   position: relative;
   & + .row { margin-top: $margin; }
 }

@@ -1,8 +1,8 @@
 <section
-  class="site-header__offset color-white banner align-center"
+  class="site-header__offset color-white banner"
   style="background-image: url({{ site.baseurl }}/img/bg/banner-{{ page.class }}.jpg)">
 
-  <div class="row row--padding banner--padding">
+  <div class="row row--padding banner--padding align-center">
     <h1 class="banner--title title--kerning-wide">
       {% if page.banner-title %}
         {{ page.banner-title }}
@@ -14,9 +14,40 @@
 
   {% if page.banner-content %}
   <div class="banner--content">
-    <div class="row row--padding">
+
+    <section class="row row--padding align-center section--padding-small">
       {{ page.banner-content }}
-    </div>
+
+      {% if page.expert-title %}
+        <p><a href="#expert" class="js-expand-content--btn btn btn--small">Meet our {{ page.title }} expert</a></p>
+      {% endif %}
+
+    </section>
+
+    {% if page.expert-title %}
+    <section id="expert" class="expert js-expand-content">
+
+      <div class="row row-thin">
+        <h4 class="title title--sm title--kerning-wide expert__title">
+          <span class="expert__image">
+            <img src="{{ site.baseurl }}/img/content/{{ page.class }}/expert.jpg" alt="" width="100%">
+          </span>
+          {{ page.expert-title | upcase }}
+        </h4>
+      </div>
+
+      <div class="row row-thin row--columns-6-6-gutters">
+        <div class="row__column">
+          {{ page.expert-content }}
+        </div>
+        <div class="row__column">
+          {{ page.expert-specialty }}
+        </div>
+      </div>
+
+    </section>
+    {% endif %}
+
   </div>
   {% endif %}
 

@@ -10,8 +10,7 @@
 
     <div class="offer__content">
 
-      <h2 class="offer__content-title"><a id="title-link-{{ offer.class }}" href="{{ offer.link }}">{{ offer.title }}</a></h2>
-      <h3 class="h4 offer__content-location">{{ offer.location }}</h3>
+      <h2 class="offer__content-title title title--sm title--kerning=wide title--medium"><a id="title-link-{{ offer.class }}" href="{{ offer.link }}">{{ offer.title | upcase }}</a></h2>
 
       {% if offer.description %}
         <p>{{ offer.description }}</p>
@@ -19,13 +18,6 @@
 
       <p>From <strong>£{{ offer.price }}</strong> {{ offer.price-description }}</p>
 
-      {% if offer.saved %}
-        <p>Save up to <strong>{{ offer.saved }}</strong></p>
-      {% endif %}
-
-      {% if offer.expires %}
-        <p>Offer ends on <strong>{{ offer.expires | date_to_long_string }}</strong></p>
-      {% endif %}
       <a id="button-link-{{ offer.class }}" href="{{ offer.link }}" class="btn btn--solid">View Offer</a>
 
     </div>

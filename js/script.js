@@ -134,11 +134,11 @@ function pageTrack( sectionClass, sectionOffset ){
 };
 
 $(document).scroll(function(){
-  pageTrack('#food-and-drink',455);
-  pageTrack('#culture',395);
-  pageTrack('#attractions',335);
-  pageTrack('#shopping',275);
-  pageTrack('#flights',215);
+  pageTrack('#food-and-drink',460);
+  pageTrack('#culture',400);
+  pageTrack('#attractions',340);
+  pageTrack('#shopping',280);
+  pageTrack('#flights',165);
 });
 
 // Separate function for first icon
@@ -175,6 +175,27 @@ $(window).resize(function(){
 
 $(document).ready(function(){
   overviewResize();
+});
+
+
+///////////////////////////////////////
+//    Expanding content
+///////////////////////////////////////
+
+var eleHeight = $('.js-expand-content').outerHeight();
+
+$(document).ready(function(){
+  $('.js-expand-content').css('height','0');
+});
+
+$('.js-expand-content--btn').click(function(){
+  if($('.js-expand-content').hasClass('expanded')){
+    $('.js-expand-content').css('height','0');
+    $('.js-expand-content').removeClass('expanded');
+  }else{
+    $('.js-expand-content').css('height',eleHeight);
+    $('.js-expand-content').addClass('expanded');
+  }
 });
 
 
