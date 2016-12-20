@@ -1,18 +1,6 @@
 <footer class="site-footer color-white">
 
-  <div class="row row--padding row--columns-6-6">
-    <div class="row__column">
-      <a class="logo logo--secret-escapes" href="https://www.secretescapes.com/">
-        <img class="logo--secret-escapes--img js-svg-swap" src="{{ site.baseurl }}/img/logo/secret-escapes.png" alt="Secret Escapes logo">
-      </a>
-    </div>
-    <div class="row__column align-right">
-      {% include partner-logo.html %}
-    </div>
-  </div>
-
   <div class="row row--padding align-center">
-    <hr />
     {% assign nav-order = site.pages | sort:"nav-order" %}
     <ul class="list--horizontal footer-nav">
       {% for page in nav-order %}
@@ -27,7 +15,7 @@
   </div>
 
   <div class="row row--padding align-center">
-    © Copyright <span class="js-year">2016</span> Secret Escapes
+    Terms and conditions apply see <a href="http://www.britishairways.com/travel/home/public/en_gb">ba.com</a>. © Copyright <span class="js-year">2016</span> Secret Escapes
   </div>
 
 </footer>

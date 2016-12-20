@@ -17,11 +17,22 @@
 
     <section class="row row--padding align-center section--padding-small">
       {{ page.banner-content }}
-
-      {% if page.expert-title %}
-        <p><a href="#expert" class="js-expand-content--btn btn btn--small">Meet our {{ page.title }} expert</a></p>
+      {% if page.layout == 'city' %}
+      <p>
+        {% if page.link-three-sixty %}
+          <a href="{{ page.link-three-sixty }}" class="btn btn--small btn--solid btn--icon">
+            <span class="btn__icon btn__icon-360"><img class="js-svg-swap" src="{{ site.baseurl }}/img/icons/icon-360.png" alt=""></span>
+            Explore {{ page.title }} in 360
+          </a>
+        {% endif %}
+        {% if page.expert-title %}
+          <a href="#expert" class="js-expand-content--btn btn btn--small btn--solid btn--icon">
+            <span class="btn__icon" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.class }}/expert.jpg');"></span>
+            Meet our {{ page.title }} expert
+          </a>
+        {% endif %}
+      </p>
       {% endif %}
-
     </section>
 
     {% if page.expert-title %}

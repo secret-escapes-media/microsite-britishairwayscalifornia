@@ -3,31 +3,18 @@ layout: content
 title: Competition
 class: competition
 nav-order: 8
+link-logos: https://ad.doubleclick.net/ddm/clk/315237374;143071715;z
+link-book-now: https://ad.doubleclick.net/ddm/clk/315237373;143071716;z
 
 banner-title:
 banner-content: >
   <p class="lead-paragraph">Enter here for your chance to win an exclusive holiday in the home of eternal sunshine</p>
 
-intro: >
-  <p class="lead-paragraph">Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-
-sections:
-  - title: Maecenas sed
-    class: maecenas-sed
-    content: >
-      <p class="lead-paragraph">Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus.</p>
-
-  - title: Maecenas sed
-    class: maecenas-sed
-    content: >
-      <p class="lead-paragraph">Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus.</p>
-
-
 ---
 
 
 
-<section class="">
+<section>
 
   <div class="row row--padding row--columns-5-7-gutters row--columns-vertical-align">
 
@@ -38,13 +25,70 @@ sections:
 
     <div class="row__column">
       <p class="lead-paragraph">Shed off the winter blues and dream of winning the chance to explore this varied and magnificent state.</p>
-      <p>Immerse yourself in our city guides, discovering cultural treasures bucket-list adventures before unearthing hidden gems and epic landscapes in our road trip page. Realise the Californian dream by entering our competition, which offers a choice of four exclusive packages, courtesy of British Airways.</p>
-      <p>Lucky winners will have the chance to pick from a five night break in LA, San Diego or San Francisco, flights included,  or a seven day fly and drive from either Oakland or San Jose.</p>
+      <p>Realise the Californian dream by entering our competition, which offers a choice of exclusive packages, courtesy of British Airways.</p>
+      <p>One lucky winner will have the chance to pick one of the below prizes:</p>
+      <ul>
+        <li>A five-night break in Los Angeles, San Diego or San Francisco, flights included</li>
+        <li>A seven-night fly-and-drive from either Oakland or San Jose</li>
+      </ul>
     </div>
 
   </div>
 
 </section>
+
+
+
+<section class="section--light-grey-bg">
+  <div class="row row--padding align-center">
+    <h3 class="title title--sm">Enter below to be in to win!</h3>
+  </div>
+  <div class="row row--padding">
+    <iframe src="https://promotion2535.strutta.me" width="100%" height="580"> </iframe>
+  </div>
+</section>
+
+
+
+<!-- BRITISH AIRWAYS // Section promoting BA, and flight details to current city -->
+{% include flights-section.html %}
+
+
+
+<!-- TRACKING TAGS
+     Generates script for page tracking -->
+<div class="hidden">
+  <script type="text/javascript">
+    var ord = Number(ord) || Math.floor(Math.random()*10e12);
+    function generateScript(str_1,str_2,str_3,str_4){
+
+      var script = document.createElement('script');
+      var script_link = str_1 + ord + ';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?';
+      script.src = script_link;
+
+      var noscript = str_2 + ord + str_3 + ord + str_4;
+
+      $('body').prepend(noscript);
+      $('body').prepend(script);
+    };
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_Hub_Competition_logo_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071715;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071715;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071715;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_Hub_Competition_FlightBanner_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071716;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071716;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071716;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+  </script>
+</div>
 
 
 

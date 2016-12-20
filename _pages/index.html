@@ -3,6 +3,8 @@ layout: home
 title: Overview
 class: overview
 nav-order: 1
+link-logos: https://ad.doubleclick.net/ddm/clk/315237398;143069052;g
+link-book-now:
 
 banner-title: California
 banner-content: >
@@ -10,7 +12,7 @@ banner-content: >
 
 intro: >
   <p class="lead-paragraph">California needs little introduction; it has been immortalised on screen, on record, and has permeated popular culture globally.</p>
-  <p>It is a leading creative powerhouse on the world stage, and has framed cultural revolutions, from boom to bust and from gold to tech. With a dazzling diversity of landscapes – from lush National Park treasures to barren desert scapes, and from dense urban centres to charming small town America – California offers a vast range of experiences for any savvy traveller. </p>
+  <p>It is a leading creative powerhouse on the world stage, and has framed cultural revolutions, from boom to bust and from gold to tech. With a dazzling diversity of landscapes – from lush National Park treasures to barren desert scapes, and from dense urban centres to charming small town America – California offers a vast range of experiences for any savvy traveller.</p>
   <p>What better way to explore this vibrant state than by embarking on the all-American road trip. With flights from British Airways landing you in comfort to four of California’s most buzzing cities, you’ll be set to hop into your chosen vehicle and go exploring...</p>
 
 ---
@@ -63,3 +65,32 @@ intro: >
 
 
 {% include flights-section.html %}
+
+
+
+<!-- TRACKING TAGS
+     Generates script for page tracking -->
+<div class="hidden">
+  <script type="text/javascript">
+    var ord = Number(ord) || Math.floor(Math.random()*10e12);
+    function generateScript(str_1,str_2,str_3,str_4){
+
+      var script = document.createElement('script');
+      var script_link = str_1 + ord + ';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?';
+      script.src = script_link;
+
+      var noscript = str_2 + ord + str_3 + ord + str_4;
+
+      $('body').prepend(noscript);
+      $('body').prepend(script);
+    };
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_Hub_Overview_logo_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069052;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069052;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069052;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+  </script>
+</div>

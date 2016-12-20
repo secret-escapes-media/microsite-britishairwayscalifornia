@@ -1,0 +1,200 @@
+---
+layout: content
+title: Take Me There
+class: take-me-there
+nav-order: 7
+link-logos: https://ad.doubleclick.net/ddm/clk/315237387;143069063;g
+
+banner-title:
+banner-content: >
+  <p class="lead-paragraph">Browse these great offers to realise your Californian wanderlust. From classic road trippin’ adventures cross-state to exploring the history and culture of the vibrant urban centres, take a browse below and visit The Golden State.</p>
+
+---
+
+
+
+{% assign cities = site.pages | where: "layout", "city" |  sort:"nav-order" %}
+
+{% for city in cities %}
+
+<section class="page-section section--border-bottom">
+  <div class="row row--padding row--columns-5-7-gutters row--columns-vertical-align">
+
+    <div class="row__column">
+      <a href="{{ city.link-flights }}" id="{{ place.class }}" data-place="{{ place.class }}" class="card color-white align-center bg-image-ratio bg-image-ratio--3-2" style="background-image: url('{{ site.baseurl }}/img/bg/banner-{{ city.class }}.jpg');">
+      </a>
+    </div>
+
+    <div class="row__column">
+      <h2 class="title title--regular title--kerning-wide title--margin-sm title--medium">{{ city.title }}</h3>
+      <p>{{ city.banner-content | strip_html }}</p>
+      <a href="{{ city.link-flights-flights }}" class="btn btn--small">{{ city.flight-details-short }}</a>
+      <a href="{{ city.link-flights-packages }}" class="btn btn--small">{{ city.holiday-details-short }}</a>
+    </div>
+
+  </div>
+</section>
+
+{% endfor %}
+
+<section class="page-section section--border-bottom">
+  <div class="row row--padding row--columns-5-7-gutters row--columns-vertical-align">
+
+    <div class="row__column">
+      <a href="#" id="san-jose" data-place="san-jose" class="card color-white align-center bg-image-ratio bg-image-ratio--3-2" style="background-image: url('{{ site.baseurl }}/img/bg/banner-san-jose.jpg');">
+      </a>
+    </div>
+
+    <div class="row__column">
+      <h2 class="title title--regular title--kerning-wide title--margin-sm title--medium">San Jose</h3>
+      <p>A diverse and modern stop perfect as a fly-and-drive destination for discovering this enigmatic state.</p>
+      <a href="#" class="btn btn--small">Fly return from Heathrow</a>
+      <a href="#" class="btn btn--small">Holidays from £529 per person</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="page-section section--light-grey-bg">
+  <div class="row row--padding align-center">
+    <h2 class="title title--md title--kerning-wide title--medium title--margin-sm">SECRET ESCAPES OFFERS</h2>
+    <p class="lead-paragraph">Browse curated offers from your Secret Escapes team, ready to see you kick-back in bucket-list Cali destinations</p>
+  </div>
+  <div class="row row--padding row--columns-4-4-4-gutters align-center">
+
+    {% assign offers = site.data.offers %}
+    {% for offer in offers %}
+      {% include offer-block.html class="stack" %}
+    {% endfor %}
+
+  </div>
+</section>
+
+
+
+<!-- TRACKING TAGS
+     Generates script for page tracking -->
+<div class="hidden">
+  <script type="text/javascript">
+    var ord = Number(ord) || Math.floor(Math.random()*10e12);
+    function generateScript(str_1,str_2,str_3,str_4){
+
+      var script = document.createElement('script');
+      var script_link = str_1 + ord + ';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?';
+      script.src = script_link;
+
+      var noscript = str_2 + ord + str_3 + ord + str_4;
+
+      $('body').prepend(noscript);
+      $('body').prepend(script);
+    };
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_Hub_Flights_logo_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069063;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069063;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069063;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_oakland_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069064;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069064;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069064;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Flights_CTA_oakland_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069065;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069065;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069065;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Packages_CTA_oakland_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069066;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069066;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069066;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_SanFran_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069067;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069067;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069067;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Flights_CTA_SanFran_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069068;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069068;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069068;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Packages_CTA_SanFran_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143069069;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143069069;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143069069;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_LA_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071709;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071709;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071709;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Flights_CTA_LA_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071710;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071710;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071710;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Packages_CTA_LA_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071711;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071711;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071711;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_SanDiego_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071712;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071712;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071712;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Flights_CTA_SanDiego_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071713;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071713;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071713;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+
+    /*-- DOUBLECLICK // SecretEscapes_BA_Cali_hub_Flights_Packages_CTA_SanDiego_Pros_Fixed_1x1 --*/
+    generateScript(
+      "https://ad.doubleclick.net/ddm/adj/N9402.2141904SECRETESCAPES/B10714591.143071714;sz=1x1;ord=",
+      "<noscript><a href='https://ad.doubleclick.net/ddm/jump/N9402.2141904SECRETESCAPES/B10714591.143071714;sz=1x1;ord=",
+      "?'><img src='https://ad.doubleclick.net/ddm/ad/N9402.2141904SECRETESCAPES/B10714591.143071714;sz=1x1;ord=",
+      ";dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?' border=0 width=1 height=1 alt='Advertisement'></a></noscript>"
+    );
+  </script>
+</div>
+

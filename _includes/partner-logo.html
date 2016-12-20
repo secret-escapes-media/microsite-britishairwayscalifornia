@@ -1,13 +1,9 @@
-<a class="logo logo--partner" href="#">
+<a class="logo logo--partner" href="{{ page.link-logos }}">
   <img class="logo--partner--img js-svg-swap" src="{{ site.baseurl }}/img/logo/british-airways.png" alt="British Airways Logo">
 </a>
 
-{% if page.layout == "city" %}
-<a class="logo logo--tb logo--tb-{{ page.class }}" href="#">
-  <img class="logo--tb--img js-svg-swap" src="{{ site.baseurl }}/img/logo/{{ page.class }}.png" alt="{{ page.title }} Logo">
-</a>
-{% elsif page.layout == "roadtrip" %}
-<a class="logo logo--tb logo--tb-{{ page.class }}" href="#">
+{% if page.layout == "city" or page.layout == "roadtrip" %}
+<a class="logo logo--tb logo--tb-{{ page.class }}" href="{{ page.link-logos }}">
   <img class="logo--tb--img js-svg-swap" src="{{ site.baseurl }}/img/logo/{{ page.class }}.png" alt="{{ page.title }} Logo">
 </a>
 {% endif %}

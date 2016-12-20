@@ -147,9 +147,27 @@ dl {
   * + & { margin-top: 2em; }
   & + & { margin-left: 0.5em; }
 
-  &--solid { color: white; border: 0; background-color: $partner-primary; }
+  &--solid { color: white; border: 2px solid $partner-primary; background-color: $partner-primary; }
   &--large { font-size: 1em; padding: .5em 3em; }
   &--small { font-size: 0.8em; padding: .4em 1.5em .5em; }
+  &--icon { padding-left: 1em; }
+
+  &__icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: -6px;
+    margin-right: 8px;
+    text-align: center;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: top;
+    line-height: 0;
+    &-360 { background-color: $partner-primary; padding: 4px; }
+  }
 }
 
 
@@ -189,9 +207,9 @@ hr {
   p,h1,h2,h3,h4,h5,h6,
   .h1,.h2,.h3,.h4,.h5,.h6,
   .title { color: #fff; }
-  hr { background-color: $white-25; }
+  hr { background-color: $white-15; }
   .btn { border: 2px solid #fff; color: #fff; }
-  .btn--solid { border: 0; background-color: #fff; color: $partner-primary; }
+  .btn--solid {  background-color: #fff; border: 2px solid #fff; color: $partner-primary; }
 }
 
 .color-default {
@@ -202,7 +220,7 @@ hr {
   .title { color: $text-heading; }
   hr { background-color: $light-grey; }
   .btn { border: $partner-primary; color: $partner-primary; }
-  .btn--solid { border: 0; background-color: $partner-primary; color: #fff; }
+  .btn--solid { background-color: $partner-primary; border: 2px solid $partner-primary; color: #fff; }
 }
 
 
