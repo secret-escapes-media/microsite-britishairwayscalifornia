@@ -3,11 +3,11 @@
   style="background-image: url({{ site.baseurl }}/img/bg/banner-{{ page.class }}.jpg)">
 
   <div class="row row--padding banner--padding align-center">
-    <h1 class="banner--title title--kerning-wide">
+    <h1 class="banner--title title title--xxl title--light title--kerning-wide">
       {% if page.banner-title %}
-        {{ page.banner-title }}
+        {{ page.banner-title | upcase }}
       {% else %}
-        {{ page.title }}
+        {{ page.title | upcase }}
       {% endif %}
     </h1>
   </div>

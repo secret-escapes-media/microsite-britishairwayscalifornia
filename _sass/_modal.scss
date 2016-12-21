@@ -38,7 +38,10 @@
     vertical-align: middle;
     padding-top: ($margin / 2);
     padding-bottom: ($margin / 2);
+    overflow: scroll;
+    position: absolute;
     @include bp(large){
+      position: relative;
       padding-top: $margin;
       padding-bottom: $margin;
     };
@@ -64,8 +67,8 @@
 
   &__item {
     background-color: #fff;
-    border-radius: 3px;
     margin: 2em 0;
+    box-shadow: 0 0 20px 0px $black-5;
     display: none;
     &-active {
       display: block;

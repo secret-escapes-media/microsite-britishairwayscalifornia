@@ -7,10 +7,19 @@ link-logos: https://ad.doubleclick.net/ddm/clk/315237387;143069063;g
 
 banner-title:
 banner-content: >
-  <p class="lead-paragraph">Browse these great offers to realise your Californian wanderlust. From classic road trippin’ adventures cross-state to exploring the history and culture of the vibrant urban centres, take a browse below and visit The Golden State.</p>
-
+  <p class="title title--sm title--kerning-wide title--medium">WHAT IF YOUR NEXT HOLIDAY TOOK YOU TO CALIFORNIA?</p>
 ---
 
+
+
+
+<section class="section--partner-bg color-white section--padding-small">
+  <div class="row row--padding align-center">
+    <p>British Airways fly direct from London to five gateways in California, and offer hotels and car rental too, meaning your California holiday is closer than you think. Enjoy the choice of three or four cabin classes, with luggage and food and drink included.</p>
+    <p>From classic road trippin’ adventures cross-state to exploring the history and culture of the vibrant urban centres, take a browse below and visit The Golden State.</p>
+    <p>To bring the dream a little closer, all these offers are part of the British Airways unforgettable sale. Book by 31st January and realise your California wanderlust.</p>
+  </div>
+</section>
 
 
 {% assign cities = site.pages | where: "layout", "city" |  sort:"nav-order" %}
@@ -21,15 +30,15 @@ banner-content: >
   <div class="row row--padding row--columns-5-7-gutters row--columns-vertical-align">
 
     <div class="row__column">
-      <a href="{{ city.link-flights }}" id="{{ place.class }}" data-place="{{ place.class }}" class="card color-white align-center bg-image-ratio bg-image-ratio--3-2" style="background-image: url('{{ site.baseurl }}/img/bg/banner-{{ city.class }}.jpg');">
+      <a href="{{ city.link-flights }}" target="_blank" id="{{ place.class }}" data-place="{{ place.class }}" class="card color-white align-center bg-image-ratio bg-image-ratio--3-2" style="background-image: url('{{ site.baseurl }}/img/bg/banner-{{ city.class }}.jpg');">
       </a>
     </div>
 
     <div class="row__column">
       <h2 class="title title--regular title--kerning-wide title--margin-sm title--medium">{{ city.title }}</h3>
-      <p>{{ city.banner-content | strip_html }}</p>
-      <a href="{{ city.link-flights-flights }}" class="btn btn--small">{{ city.flight-details-short }}</a>
-      <a href="{{ city.link-flights-packages }}" class="btn btn--small">{{ city.holiday-details-short }}</a>
+      <p>{{ city.flight-content }}</p>
+      <a href="{{ city.link-flights-flights }}" target="_blank" class="btn btn--small">{{ city.flight-details-short }}</a>
+      <a href="{{ city.link-flights-packages }}" target="_blank" class="btn btn--small">{{ city.holiday-details-short }}</a>
     </div>
 
   </div>
@@ -47,9 +56,12 @@ banner-content: >
 
     <div class="row__column">
       <h2 class="title title--regular title--kerning-wide title--margin-sm title--medium">San Jose</h3>
-      <p>A diverse and modern stop perfect as a fly-and-drive destination for discovering this enigmatic state.</p>
-      <a href="#" class="btn btn--small">Fly return from Heathrow</a>
-      <a href="#" class="btn btn--small">Holidays from £529 per person</a>
+      <p class="title title--margin">10.5 hours from London Heathrow</p>
+      <p>Fly to San Jose direct from London Heathrow, with daily departures.</p>
+      <p>Add a car to your flight booking to see more of the State of California and explore the West Pacific Highway…</p>
+
+      <a href="#" target="_blank" class="btn btn--small">Fly return from Heathrow</a>
+      <a href="#" target="_blank" class="btn btn--small">Holidays from £529 per person</a>
     </div>
 
   </div>
@@ -57,11 +69,11 @@ banner-content: >
 
 
 
-
+<!--
 <section class="page-section section--light-grey-bg">
   <div class="row row--padding align-center">
     <h2 class="title title--md title--kerning-wide title--medium title--margin-sm">SECRET ESCAPES OFFERS</h2>
-    <p class="lead-paragraph">Browse curated offers from your Secret Escapes team, ready to see you kick-back in bucket-list Cali destinations</p>
+    <p class="lead-paragraph">Browse curated offers from your Secret Escapes team, ready to see you kick-back in bucket-list California destinations</p>
   </div>
   <div class="row row--padding row--columns-4-4-4-gutters align-center">
 
@@ -72,7 +84,7 @@ banner-content: >
 
   </div>
 </section>
-
+-->
 
 
 <!-- TRACKING TAGS

@@ -7,7 +7,7 @@ layout: default
 
 
 <section class="section--partner-bg color-white">
-  <div class="row align-center">
+  <div class="row row--padding align-center">
     <h2 class="title title--xs title--kerning-wide title--margin-lg">{{ page.flight-details | upcase }}</h2>
     <p>
       <a href="{{ page.link-book-now }}" class="btn">Book now</a>
@@ -86,7 +86,13 @@ layout: default
               </span>
               {% endif %}
             </h4>
-            <p>{{ place.description | truncate: 50 | strip_html }}</p>
+            <p>
+              {% if place.experts-pick %}
+                <em>{{ place.description | truncate: 50 | strip_html }}</em>
+              {% else %}
+                {{ place.description | truncate: 50 | strip_html }}
+              {% endif %}
+            </p>
           </a>
         </div>
 

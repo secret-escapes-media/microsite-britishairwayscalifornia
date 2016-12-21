@@ -52,8 +52,12 @@
     padding: 4em 0;
     &-none { padding: 0 0; }
     &-small { padding: 2em 0; }
-    &-medium { padding: 6em 0; }
-    &-large { padding: 10em 0; }
+    &-medium { padding: 3em 0; }
+    &-large { padding: 3em 0; }
+    @include bp(large) {
+      &-medium { padding: 6em 0; }
+      &-large { padding: 10em 0; }
+    }
   }
 
   // styling for page section titles with icons
@@ -120,10 +124,6 @@
     padding: 10em 0;
   }
   &--title {
-    font-family: $title-font-family;
-    text-transform: uppercase;
-    font-weight: 100;
-    font-size: 3.8em;
     text-shadow: 0 0 35px rgba(14, 20, 32, 0.8);
     line-height: 1;
     @include bp(large) {
@@ -132,6 +132,10 @@
   }
   &--content {
     background-color: $black-5;
+    padding: 0 2em;
+    @include bp(large) {
+      padding: 0;
+    }
   }
 }
 
@@ -185,6 +189,7 @@
 
   &.bg-image-ratio {
     padding: 0;
+    float: none;
     &.card--overlay {
       &:before {
         position: absolute; height: 100%;
@@ -290,7 +295,7 @@
 
   // Small thumbnail square, to be paired with bg-image-ratio--1-1
   &-thumbnail {
-    width: 100px; margin-right: 2em; float: left; overflow: hidden;
+    width: 100px; margin-right: 2em; float: left !important; overflow: hidden;
   }
   &-feature { width: 100%; display: block; overflow: hidden; }
 
