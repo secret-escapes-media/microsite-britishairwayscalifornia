@@ -41,6 +41,7 @@
     overflow: scroll;
     position: absolute;
     @include bp(large){
+      overflow: hidden;
       position: relative;
       padding-top: $margin;
       padding-bottom: $margin;
